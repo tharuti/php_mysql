@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Task Management Dashboard</title>    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-3">
+    <h1 class="mb-3">Task Management Dashboard</h1>
+
+    <div class="row" id="tasksList">
+        <!-- Tasks will be displayed here -->
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+ <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+<script>
+    var tasks = [
+        "Task 1", "Task 2", "Task 3", "Task 4", "Task 5",
+        "Task 6", "Task 7", "Task 8", "Task 9", "Task 10",
+        "Task 11", "Task 12", "Task 13", "Task 14", "Task 15",
+        "Task 16", "Task 17", "Task 18", "Task 19", "Task 20"
+    ];
+
+    var tasksList = document.getElementById("tasksList");
+
+    tasks.forEach(function(task) {
+        var taskItem = document.createElement("div");
+        taskItem.className = "col-lg-2 col-md-3 col-sm-4 mb-4"; // Adjust column classes
+        taskItem.innerHTML = `
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${task}</h5>
+                    <input type="checkbox" class="form-check-input" onchange="toggleTaskCompletion(this)">
+                    <label class="form-check-label">${task}</label>
+                </div>
+            </div>
+        `;
+        tasksList.appendChild(taskItem);
+    });
+
+    function toggleTaskCompletion(checkbox) {
+        var label = checkbox.nextElementSibling;
+        if (checkbox.checked) {
+            label.classList.add("completed");
+        } else {
+            label.classList.remove("completed");
+        }
+    }
+</script>
+</body>
+</html>
